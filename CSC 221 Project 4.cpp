@@ -1,20 +1,59 @@
-// CSC 221 Project 4.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// CSC 221 Project 4.cpp : Program 1: Days in a Month
 
 #include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int month, year, days;
+
+    cout << "Enter a month (1-12): ";
+    cin >> month;
+
+    if (month >= 1 && month <= 12) { // if month is > 1 and < 12 continue
+        cout << "Enter a year: ";
+        cin >> year;
+
+        if (year % 100 == 0 && year % 400 == 0) { // if year is divisible by 100 and 400
+            if (month == 2) {
+                days = 29;
+            } // leap year 
+            else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+                days = 31;
+            }
+            else {
+                days = 30;
+            }
+        }
+        else if (year % 100 != 0 && year % 4 == 0) { // else if year not divisible by 100 and divisible by 4
+            if (month == 2) {
+                days = 29;
+            } // leap year if divisible by 4
+            else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+                days = 31;
+            }
+            else {
+                days = 30;
+            }
+        }
+        else {
+            if (month == 2) {
+                days = 28;
+            } // not a leap year
+            else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+                days = 31;
+            }
+            else {
+                days = 30;
+            }
+        }
+    }
+    else {
+        cout << "Invalid number";
+    }
+    cout << days << " days" << endl;
+    return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
