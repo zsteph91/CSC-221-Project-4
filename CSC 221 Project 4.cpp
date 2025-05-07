@@ -7,28 +7,28 @@ using namespace std;
 
 int main()
 {
-    float weight, rate;
-    int distance, distanceSegments;
+    float weight, rate; // weight of package and variable to store final cost
+    int distance, distanceSegments; // distance to be shipped and number of 500 mile segments it will cover
     
     cout << "Weight of package (kg): ";
     cin >> weight;
 
-    if (weight <= 0 || weight > 20) {
+    if (weight <= 0 || weight > 20) { // Check inputted value is within valid range
         cout << "Invalid weight";
     }
     else {
         cout << "Distance to be shipped (mi): ";
         cin >> distance;
 
-        if (distance < 10 || distance > 3000) {
+        if (distance < 10 || distance > 3000) { // Check distance is in valid range
             cout << "Invalid distance";
         }
         else {
-            if (distance % 500 == 0) {
+            if (distance % 500 == 0) { // If distance is divisible by 500 # of times rate will be payed is clean
                 distanceSegments = distance / 500;
 
                 if (weight <= 2) {
-                    rate = distanceSegments * 1.10;
+                    rate = distanceSegments * 1.10; // multiply # of segments by rate based on weight
                 }
                 else if (weight <= 6) {
                     rate = distanceSegments * 2.20;
@@ -40,8 +40,8 @@ int main()
                     rate = distanceSegments * 4.80;
                 }
             }
-            else {
-                distanceSegments = (distance / 500) + 1;
+            else { // if distance is not divisible by 500 add one segment to prevent free delivery under 500 miles
+                distanceSegments = (distance / 500) + 1; 
 
                 if (weight <= 2) {
                     rate = distanceSegments * 1.10;
