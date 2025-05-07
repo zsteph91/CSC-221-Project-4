@@ -7,9 +7,9 @@ using namespace std;
 
 int main()
 {
-    int month, year, days;
+    int month, year, days; // variables to select the correct # of days and store that to be outputted
 
-    cout << "Enter a month (1-12): ";
+    cout << "Enter a month (1-12): "; // prompt the user for a month
     cin >> month;
 
     if (month >= 1 && month <= 12) { // if month is > 1 and < 12 continue
@@ -38,20 +38,20 @@ int main()
                 days = 30;
             }
         }
-        else {
+        else { // not a leap year
             if (month == 2) {
                 days = 28;
-            } // not a leap year
+            } 
             else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
                 days = 31;
             }
             else {
                 days = 30;
             }
-            cout << days << " days" << endl;
         }
+        cout << days << " days" << endl;
     }
-    else {
+    else { // Initial input out of range
         cout << "Invalid number";
     }
     return 0;
