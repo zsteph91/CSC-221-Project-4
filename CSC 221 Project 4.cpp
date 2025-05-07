@@ -7,8 +7,9 @@ using namespace std;
 
 int main()
 {
-    int weight, distance, rate;
-
+    float weight, rate;
+    int distance, distanceSegments;
+    
     cout << "Weight of package (kg): ";
     cin >> weight;
 
@@ -16,17 +17,49 @@ int main()
         cout << "Invalid weight";
     }
     else {
-        cout << "DIstance to be shipped (mi): ";
+        cout << "Distance to be shipped (mi): ";
         cin >> distance;
 
         if (distance < 10 || distance > 3000) {
             cout << "Invalid distance";
         }
         else {
-            rate = 30;
+            if (distance % 500 == 0) {
+                distanceSegments = distance / 500;
+
+                if (weight <= 2) {
+                    rate = distanceSegments * 1.10;
+                }
+                else if (weight <= 6) {
+                    rate = distanceSegments * 2.20;
+                }
+                else if (weight <= 10) {
+                    rate = distanceSegments * 3.70;
+                }
+                else {
+                    rate = distanceSegments * 4.80;
+                }
+            }
+            else {
+                distanceSegments = (distance / 500) + 1;
+
+                if (weight <= 2) {
+                    rate = distanceSegments * 1.10;
+                }
+                else if (weight <= 6) {
+                    rate = distanceSegments * 2.20;
+                }
+                else if (weight <= 10) {
+                    rate = distanceSegments * 3.70;
+                }
+                else {
+                    rate = distanceSegments * 4.80;
+                }
+            }
         }
+        cout << "It will cost $" << setprecision(2) << fixed << rate <<  " to ship this package" << endl;
     }
-    cout << "It will cost " << rate << " to ship this package" << endl;
-    return 0;
+        return 0;
 }
+
 
