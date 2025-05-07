@@ -1,65 +1,57 @@
-// CSC 221 Project 4.cpp : Program 2: Shipping Charges
+// CSC 221 Project 4.cpp : Program 3: Geometry Calculator
 
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cmath>
 using namespace std;
 
 int main()
 {
-    float weight, rate;
-    int distance, distanceSegments;
-    
-    cout << "Weight of package (kg): ";
-    cin >> weight;
+    int selection;
+    double radius, length, width, base, height, area;
 
-    if (weight <= 0 || weight > 20) {
-        cout << "Invalid weight";
+    cout << "Geometry Calculator" << endl;
+    cout << "1. Calculate the Area of a Circle" << endl;
+    cout << "2. Calculate the Area of a Rectangle" << endl;
+    cout << "3. Calculate the Area of a Triangle" << endl;
+    cout << "4. Quit" << endl;
+    cout << "Enter you choice (1-4): ";
+    cin >> selection;
+
+    if (selection < 1 || selection > 4) {
+        "Invalid option";
     }
     else {
-        cout << "Distance to be shipped (mi): ";
-        cin >> distance;
+        if (selection == 4) {
+            return 0;
+        }
+        else if (selection == 1) {
+            cout << "What is the radius of the circle? ";
+            cin >> radius;
 
-        if (distance < 10 || distance > 3000) {
-            cout << "Invalid distance";
+            area = 3.14159 * radius * radius;
+            cout << "The area is " << setprecision(2) << fixed << area << endl;
+        }
+        else if (selection == 2) {
+            cout << "What is the length of the rectangle? ";
+            cin >> length;
+            cout << "What is the width of the rectangle? ";
+            cin >> width;
+            
+            area = length * width;
+            cout << "The area is " << area << endl;
         }
         else {
-            if (distance % 500 == 0) {
-                distanceSegments = distance / 500;
+            cout << "What is the base of the rectangle? ";
+            cin >> base;
+            cout << "What is the height of the rectangle? ";
+            cin >> height;
 
-                if (weight <= 2) {
-                    rate = distanceSegments * 1.10;
-                }
-                else if (weight <= 6) {
-                    rate = distanceSegments * 2.20;
-                }
-                else if (weight <= 10) {
-                    rate = distanceSegments * 3.70;
-                }
-                else {
-                    rate = distanceSegments * 4.80;
-                }
-            }
-            else {
-                distanceSegments = (distance / 500) + 1;
-
-                if (weight <= 2) {
-                    rate = distanceSegments * 1.10;
-                }
-                else if (weight <= 6) {
-                    rate = distanceSegments * 2.20;
-                }
-                else if (weight <= 10) {
-                    rate = distanceSegments * 3.70;
-                }
-                else {
-                    rate = distanceSegments * 4.80;
-                }
-            }
+            area = (base * height) / 2;
+            cout << "The area is " << area << endl;
         }
-        cout << "It will cost $" << setprecision(2) << fixed << rate <<  " to ship this package" << endl;
     }
-        return 0;
 }
 
 
