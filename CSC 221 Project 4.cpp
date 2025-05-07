@@ -1,4 +1,4 @@
-// CSC 221 Project 4.cpp : Program 1: Days in a Month
+// CSC 221 Project 4.cpp : Program 2: Shipping Charges
 
 #include <iostream>
 #include <string>
@@ -7,53 +7,26 @@ using namespace std;
 
 int main()
 {
-    int month, year, days;
+    int weight, distance, rate;
 
-    cout << "Enter a month (1-12): ";
-    cin >> month;
+    cout << "Weight of package (kg): ";
+    cin >> weight;
 
-    if (month >= 1 && month <= 12) { // if month is > 1 and < 12 continue
-        cout << "Enter a year: ";
-        cin >> year;
-
-        if (year % 100 == 0 && year % 400 == 0) { // if year is divisible by 100 and 400
-            if (month == 2) {
-                days = 29;
-            } // leap year 
-            else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
-                days = 31;
-            }
-            else {
-                days = 30;
-            }
-        }
-        else if (year % 100 != 0 && year % 4 == 0) { // else if year not divisible by 100 and divisible by 4
-            if (month == 2) {
-                days = 29;
-            } // leap year if divisible by 4
-            else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
-                days = 31;
-            }
-            else {
-                days = 30;
-            }
-        }
-        else {
-            if (month == 2) {
-                days = 28;
-            } // not a leap year
-            else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
-                days = 31;
-            }
-            else {
-                days = 30;
-            }
-        }
+    if (weight <= 0 || weight > 20) {
+        cout << "Invalid weight";
     }
     else {
-        cout << "Invalid number";
+        cout << "DIstance to be shipped (mi): ";
+        cin >> distance;
+
+        if (distance < 10 || distance > 3000) {
+            cout << "Invalid distance";
+        }
+        else {
+            rate = 30;
+        }
     }
-    cout << days << " days" << endl;
+    cout << "It will cost " << rate << " to ship this package" << endl;
     return 0;
 }
 
