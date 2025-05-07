@@ -48,12 +48,12 @@ int main()
             else {
                 days = 30;
             }
+            cout << days << " days" << endl;
         }
     }
     else {
         cout << "Invalid number";
     }
-    cout << days << " days" << endl;
     return 0;
 }
 
